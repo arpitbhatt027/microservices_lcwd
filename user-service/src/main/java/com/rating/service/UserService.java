@@ -1,7 +1,6 @@
 package com.rating.service;
 
 import com.rating.entities.UserEntity;
-import org.apache.catalina.User;
 
 import java.util.List;
 
