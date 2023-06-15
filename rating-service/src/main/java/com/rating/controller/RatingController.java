@@ -33,4 +33,10 @@ public class RatingController {
         Ratings ratings1 = ratingService.saveRating(ratings);
         return ResponseEntity.status(HttpStatus.CREATED).body(ratings1);
     }
+
+    @GetMapping("/user/{user-id}")
+    public ResponseEntity<List<Ratings>> getUserRatings(@PathVariable("user-id") String userId) {
+        List<Ratings> ratings = ratingService.getUserRatings(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(ratings);
+    }
 }

@@ -11,4 +11,6 @@ public interface RatingService {
     Ratings getRating(String id);
 
     List<Ratings> getRatings();
+
+    List<Ratings> getUserRatings(String userId);
 }

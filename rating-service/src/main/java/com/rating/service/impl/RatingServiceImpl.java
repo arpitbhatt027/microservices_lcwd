@@ -32,4 +32,9 @@ public class RatingServiceImpl implements RatingService {
     public List<Ratings> getRatings() {
         return ratingRepo.findAll();
     }
+
+    @Override
+    public List<Ratings> getUserRatings(String userId) {
+        return ratingRepo.findAllByUserId(userId);
+    }
 }
