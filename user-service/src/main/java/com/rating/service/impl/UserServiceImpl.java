@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity getById(String userId) {
         UserEntity user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not found with given id :: " + userId));
-        Ratings[] ratingsOfUser = restTemplate.getForObject("http://localhost:8083/ratings/user/" + userId, Ratings[].class);
+        Ratings[] ratingsOfUser = restTemplate.getForObject("http://RATING-SERVICE:8083/ratings/user/" + userId, Ratings[].class);
         logger.info("" + ratingsOfUser);
 
         List<Ratings> ratings = Arrays.stream(ratingsOfUser).collect(Collectors.toList());
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
             // api call to hotel service
             // set the hotel to rating
             // return rating
-            ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://localhost:8082/hotels/"+rating.getHotelId(), Hotel.class);
+            ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTEL-SERVICE:8082/hotels/"+rating.getHotelId(), Hotel.class);
             Hotel hotel = forEntity.getBody();
             rating.setHotel(hotel);
             return rating;
